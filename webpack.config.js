@@ -9,6 +9,7 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+
   },
   devtool: "eval-source-map",
   devServer: {
@@ -18,6 +19,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/template.html",
     }),
+    {
+      apply: (compiler) => {
+        compiler.hooks.done.tap("DonePlugin", (stats) => {
+          console.log("Compile is done !");
+          setTimeout(() => {
+            process.exit(0);
+          });
+        });
+      },
+    },
   ],
   module: {
     rules: [
