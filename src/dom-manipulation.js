@@ -3,27 +3,21 @@ const contentDisplay = document.querySelector('#content')
 
 function displayItem(item){
     var itemContainer = document.createElement('div')
-    itemContainer.appendChild(createTitle(item.title))
-    itemContainer.appendChild(createTitle(item.description))
-    itemContainer.appendChild(createTitle(item.dueDate))
+    itemContainer.appendChild(createItemDiv(item.title))
+    itemContainer.appendChild(createItemDiv(item.description))
+    itemContainer.appendChild(createItemDiv(item.dueDate))
     itemContainer.appendChild(createPriority(item.priority))
-    itemContainer.appendChild(createTitle(item.checked))
+    itemContainer.appendChild(createItemDiv(item.checked))
     contentDisplay.appendChild(itemContainer)
 }
 
-function createTitle(title){
-    var titleDiv = document.createElement('div')
-    titleDiv.textContent = title
-    return titleDiv
+function createItemDiv(text){
+    var itemTextDiv = document.createElement('div')
+    itemTextDiv.textContent = text
+    return itemTextDiv
 }
 
-function createDescription(description){
-    
-}
 
-function createDate(date){
-
-}
 
 function createPriority(priority){
 
@@ -34,9 +28,7 @@ function createPriority(priority){
 
 }
 
-function createCompleted(isCompleted){
 
-}
 
 function getPriorityColor(priority){
     if(priority == "High"){
