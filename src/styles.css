@@ -1,9 +1,14 @@
 body{
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     
+}
+
+#title{
+    font-size: 2rem;
 }
 
 #to-do-container{
@@ -14,3 +19,9 @@ body{
     background-color: rgba(175, 171, 171, 0.727);
     border-radius: 10px;
 }
+
+#content{
+    display: flex;
+    justify-content: center;
+}
+
