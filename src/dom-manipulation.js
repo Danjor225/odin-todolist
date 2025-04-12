@@ -7,7 +7,7 @@ function displayItem(item){
     itemContainer.appendChild(createItemDiv(item.description))
     itemContainer.appendChild(createItemDiv(item.dueDate))
     itemContainer.appendChild(createPriority(item.priority))
-    itemContainer.appendChild(createItemDiv(item.checked))
+    itemContainer.appendChild(createCompletedBox(item.checked))
     contentDisplay.appendChild(itemContainer)
 }
 
@@ -25,6 +25,14 @@ function createPriority(priority){
     priorityDiv.style.backgroundColor = getPriorityColor(priority)
     priorityDiv.textContent = priority
     return priorityDiv
+
+}
+
+function createCompletedBox(completed){
+    var completedCheckbox = document.createElement('input')
+    completedCheckbox.setAttribute("type", "checkbox")
+    completedCheckbox.checked = completed
+    return completedCheckbox
 
 }
 
