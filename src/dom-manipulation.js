@@ -1,4 +1,4 @@
-
+import { compareAsc, format } from "date-fns";
 
 
 function displayItem(item, container){
@@ -31,7 +31,9 @@ function createItemDescDiv(text){
 
 function createDateDueDiv(date){
     var itemDateDiv = document.createElement('div')
-    itemDateDiv.textContent = date
+    
+    itemDateDiv.textContent = !isNaN(date) ? format(date, "yyyy-MM-dd") : date
+    // date.getFullYear() + ',' + date.getMonth()
     return itemDateDiv
 
 }
