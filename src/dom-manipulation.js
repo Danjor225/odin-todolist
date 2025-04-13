@@ -1,15 +1,16 @@
-const contentDisplay = document.querySelector('#content')
 
 
-function displayItem(item){
+
+function displayItem(item, container){
     var itemContainer = document.createElement('div')
     itemContainer.classList.add('item')
+    itemContainer.appendChild(createCompletedBox(item.checked))
     itemContainer.appendChild(createItemDiv(item.title))
     itemContainer.appendChild(createItemDiv(item.description))
     itemContainer.appendChild(createItemDiv(item.dueDate))
     itemContainer.appendChild(createPriority(item.priority))
-    itemContainer.appendChild(createCompletedBox(item.checked))
-    contentDisplay.appendChild(itemContainer)
+    
+    container.appendChild(itemContainer)
 }
 
 function createItemDiv(text){
