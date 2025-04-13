@@ -5,28 +5,26 @@ function displayItem(item, container){
     var itemContainer = document.createElement('div')
     itemContainer.classList.add('item')
     itemContainer.appendChild(createCompletedBox(item.checked))
-    itemContainer.appendChild(createItemDiv(item.title))
-    itemContainer.appendChild(createItemDiv(item.description))
-    itemContainer.appendChild(createItemDiv(item.dueDate))
+    itemContainer.appendChild(createItemTitleDiv(item.title))
+    itemContainer.appendChild(createItemDescDiv(item.description))
+    itemContainer.appendChild(createDateDueDiv(item.dueDate))
     itemContainer.appendChild(createPriority(item.priority))
+
     
     container.appendChild(itemContainer)
 }
 
-function displayShorterItem(item, container){
-    var itemContainer = document.createElement('div')
-    itemContainer.classList.add('item')
-    itemContainer.appendChild(createCompletedBox(item.checked))
-    itemContainer.appendChild(createItemTitleDiv(item.title))
-    itemContainer.appendChild(createDateDueDiv(item.dueDate))
-    itemContainer.appendChild(createPriority(item.priority))
-
-    container.appendChild(itemContainer)
-}
 
 function createItemTitleDiv(text){
     var itemTextDiv = document.createElement('div')
     itemTextDiv.classList.add('item-title')
+    itemTextDiv.textContent = text
+    return itemTextDiv
+}
+
+function createItemDescDiv(text){
+    var itemTextDiv = document.createElement('div')
+    itemTextDiv.classList.add('item-description')
     itemTextDiv.textContent = text
     return itemTextDiv
 }
@@ -49,12 +47,19 @@ function createPriority(priority){
 }
 
 function createCompletedBox(completed){
-    var completedCheckbox = document.createElement('input')
-    completedCheckbox.setAttribute("type", "button")
-    completedCheckbox.style.backgroundColor = completed ? 'rgb(0,255,0)' : 'rgb(255,0,0) '
+    var completedCheckbox = document.createElement('button')
+    completedCheckbox.style.backgroundColor = completed ? 'rgb(0,255,0)' : 'rgb(255,0,0)'
+    completedCheckbox.textContent = completed ? 'Complete' : 'Incomplete'
+    completedCheckbox.addEventListener('click', () => {
+        completed = !completed
+        completedCheckbox.style.backgroundColor = completed ? 'rgb(0,255,0)' : 'rgb(255,0,0)'
+        completedCheckbox.textContent = completed ? 'Complete' : 'Incomplete'
+    })
     return completedCheckbox
 
 }
+
+
 
 
 
@@ -68,4 +73,4 @@ function getPriorityColor(priority){
     }
 }
 
-export{displayItem, displayShorterItem}
+export{displayItem}

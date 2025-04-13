@@ -43,7 +43,15 @@ body{
     padding: 1rem;
     border: 2px dashed black;
     min-height: 80%;
+    font-size: 1.2rem;
 }
+
+#default-project-container > :nth-child(1){
+    margin-bottom: 10px;
+    border: 0px solid;
+    
+}
+
 
 .title{
     font-size: 2rem;
@@ -63,22 +71,33 @@ body{
 
 }
 
-.item > :nth-child(3){
+/* DueDate Display */
+.item > :nth-child(4){
     margin-left: auto;
 }
 
-.item>input{
-    min-width: 50px;
+.item>button{
+    min-width: 100px;
 }
 
 .item-title{
-    max-width: 40%;
+    min-width: 150px;
+    max-width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.item-description{
+    
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 .priority{
-    min-width: 200px;
+    min-width: 100px;
     text-align: center;
 }
