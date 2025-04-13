@@ -57,5 +57,28 @@ body{
     display: flex;
     gap: 4px;
     padding: 3px;
+    display: flex;
+    gap: 20px;
 
+
+}
+
+.item > :nth-child(3){
+    margin-left: auto;
+}
+
+.item>input{
+    min-width: 50px;
+}
+
+.item-title{
+    max-width: 40%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.priority{
+    min-width: 200px;
+    text-align: center;
 }
