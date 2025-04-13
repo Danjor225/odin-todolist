@@ -3,6 +3,7 @@ const contentDisplay = document.querySelector('#content')
 
 function displayItem(item){
     var itemContainer = document.createElement('div')
+    itemContainer.classList.add('item')
     itemContainer.appendChild(createItemDiv(item.title))
     itemContainer.appendChild(createItemDiv(item.description))
     itemContainer.appendChild(createItemDiv(item.dueDate))
