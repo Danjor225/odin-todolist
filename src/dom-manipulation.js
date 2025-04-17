@@ -1,4 +1,4 @@
-import { compareAsc, format } from "date-fns";
+import {format } from "date-fns";
 
 function createHomePage(container){
     var homePageDiv = document.createElement('div')
