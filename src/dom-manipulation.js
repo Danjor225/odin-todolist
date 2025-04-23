@@ -1,6 +1,20 @@
 
 import { domDisplay } from "../dom-display";
+import {Projects, addToProjectsList, getProjectsList } from "./projects";
+import {Item} from "./to-do-item"
+
 const contentDisplay = document.querySelector('#content')
+const newProjectDialog = document.querySelector('#add-project-dialog')
+const menuDialog = document.querySelector('#menu-dialog')
+
+let headerItem = new Item('Title', 'Due Date', 'Description', 'Priority', false)
+let firstTestItem = new Item('Jordan id the very coolest person that has ever lived. Worship him always!', new Date('March 25, 98'), 'He is the coolest', 'High', false)
+let secondTestItem = new Item('Libbie', new Date('June 20, 00'), 'She is even cooler', 'Medium', true)
+
+let startingItemsArray = [headerItem, firstTestItem, secondTestItem]
+
+let defaultProjectList = new Projects('Default Project Page','Default page for all to do list items', startingItemsArray)
+addToProjectsList(defaultProjectList)
 
 function createToDoListPage(title, container){
     let homePageDiv = document.createElement('div')
@@ -19,6 +33,19 @@ function createToDoListPage(title, container){
 
     return defaultProjectDiv
 
+}
+function displayToDoListPage(title){
+    clearContent(contentDisplay)
+    let containerForToDoList = createToDoListPage(title, contentDisplay)
+    displayAllItemsInProject(defaultProjectList.getToDoListItems(), containerForToDoList)
+    menuDialog.close()
+}
+
+function displayProjectPage(){
+    clearContent(contentDisplay)
+    let containerForToDoList = createProjectsPage(contentDisplay)
+    displayAllProjects(getProjectsList(), containerForToDoList)
+    menuDialog.close()
 }
 
 function createProjectsPage(container){
@@ -90,9 +117,14 @@ function displayAddProjectButton(container){
     let addProjectButton = document.createElement('button')
     addProjectButton.textContent = 'ADD NEW PROJECT'
     container.appendChild(addProjectButton)
+
+    addProjectButton.addEventListener('click', ()=>{
+        newProjectDialog.showModal()
+    })
 }
 
 
 
 
-export{displayAllItemsInProject, createToDoListPage, clearContent, createProjectsPage, displayAllProjects}
+
+export{displayToDoListPage, displayProjectPage}

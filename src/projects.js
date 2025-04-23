@@ -24,6 +24,10 @@ class Projects{
 
 }
 
+const createProjectBtn = document.querySelector('#create-project-btn')
+const cancelProjectBtn = document.querySelector('#cancel-project-btn')
+const newProjectDialog = document.querySelector('#add-project-dialog')
+import { displayProjectPage } from "./dom-manipulation"
 let projectsList = []
   
 function addToProjectsList(projectToAdd){
@@ -34,5 +38,21 @@ function getProjectsList(){
     return projectsList
 }
 
+createProjectBtn.addEventListener('click', (event)=>{
+    event.preventDefault()
+    const newProjectTitle = document.querySelector('#project-title')
+    const newProjectDescription = document.querySelector('#project-description')
+
+    let newProject = new Projects(newProjectTitle.value, newProjectDescription.value, [])
+    addToProjectsList(newProject)
+    displayProjectPage()
+    newProjectDialog.close()
+})
+
+cancelProjectBtn.addEventListener('click', (event)=> {
+    event.preventDefault()
+    newProjectDialog.close()
+
+})
 
 export {Projects , addToProjectsList, getProjectsList}
