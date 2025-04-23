@@ -24,7 +24,7 @@ class Projects{
 
 }
 
-var projectsList = []
+let projectsList = []
   
 function addToProjectsList(projectToAdd){
     projectsList.push(projectToAdd)

@@ -3,7 +3,7 @@ import {format } from "date-fns";
 const domDisplay = (function(){
 
     function displayItem(item, container){
-        var itemContainer = document.createElement('div')
+        let itemContainer = document.createElement('div')
         itemContainer.classList.add('item')
         itemContainer.appendChild(createCompletedBox(item.checked))
         itemContainer.appendChild(createItemTitleDiv(item.title))
@@ -17,21 +17,21 @@ const domDisplay = (function(){
 
 
     function createItemTitleDiv(text){
-        var itemTextDiv = document.createElement('div')
+        let itemTextDiv = document.createElement('div')
         itemTextDiv.classList.add('item-title')
         itemTextDiv.textContent = text
         return itemTextDiv
     }
 
     function createItemDescDiv(text){
-        var itemTextDiv = document.createElement('div')
+        let itemTextDiv = document.createElement('div')
         itemTextDiv.classList.add('item-description')
         itemTextDiv.textContent = text
         return itemTextDiv
     }
 
     function createDateDueDiv(date){
-        var itemDateDiv = document.createElement('div')
+        let itemDateDiv = document.createElement('div')
         
         itemDateDiv.textContent = !isNaN(date) ? format(date, "yyyy-MM-dd") : date
         // date.getFullYear() + ',' + date.getMonth()
@@ -41,7 +41,7 @@ const domDisplay = (function(){
 
     function createPriority(priority){
 
-        var priorityDiv = document.createElement('div')
+        let priorityDiv = document.createElement('div')
         priorityDiv.style.backgroundColor = getPriorityColor(priority)
         priorityDiv.classList.add('priority')
         priorityDiv.textContent = priority
@@ -50,7 +50,7 @@ const domDisplay = (function(){
     }
 
     function createCompletedBox(completed){
-        var completedCheckbox = document.createElement('button')
+        let completedCheckbox = document.createElement('button')
         completedCheckbox.style.backgroundColor = completed ? 'rgb(0,255,0)' : 'rgb(255,0,0)'
         completedCheckbox.textContent = completed ? 'Complete' : 'Incomplete'
         completedCheckbox.addEventListener('click', () => {

@@ -64,7 +64,7 @@ body{
    
 }
 
-#default-project-container{
+#default-project-container, #projects-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -133,6 +133,19 @@ body{
 
 .project{
     display: flex;
-    gap: 100px;
+    align-items: center;
 
+}
+
+.project :nth-child(1){
+    content: url(./svgs/cog.svg);
+}
+
+.project :nth-child(2){
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.project :nth-child(3){
+    margin-left: auto;
 }

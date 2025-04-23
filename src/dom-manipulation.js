@@ -1,16 +1,17 @@
 
 import { domDisplay } from "../dom-display";
+const contentDisplay = document.querySelector('#content')
 
-function createHomePage(container){
-    var homePageDiv = document.createElement('div')
+function createToDoListPage(title, container){
+    let homePageDiv = document.createElement('div')
     homePageDiv.setAttribute('id', 'homepage')
 
-    var titleDiv = document.createElement('div')
-    titleDiv.textContent = 'Default Home Page'
+    let titleDiv = document.createElement('div')
+    titleDiv.textContent = title
     titleDiv.classList.add('title')
     homePageDiv.appendChild(titleDiv)
 
-    var defaultProjectDiv = document.createElement('div')
+    let defaultProjectDiv = document.createElement('div')
     defaultProjectDiv.setAttribute('id', 'default-project-container')
     homePageDiv.appendChild(defaultProjectDiv)
 
@@ -21,15 +22,15 @@ function createHomePage(container){
 }
 
 function createProjectsPage(container){
-    var homePageDiv = document.createElement('div')
+    let homePageDiv = document.createElement('div')
     homePageDiv.setAttribute('id', 'homepage')
 
-    var titleDiv = document.createElement('div')
+    let titleDiv = document.createElement('div')
     titleDiv.textContent = 'Projects Page'
     titleDiv.classList.add('title')
     homePageDiv.appendChild(titleDiv)
 
-    var projectsDiv = document.createElement('ul')
+    let projectsDiv = document.createElement('ul')
     projectsDiv.setAttribute('id', 'projects-container')
     homePageDiv.appendChild(projectsDiv)
 
@@ -51,26 +52,44 @@ function displayAllItemsInProject(projectToDisplay, container){
 }
 
 function displayAllProjects(projectsList, container){
-    var projectContainer = document.createElement('li')
-    projectContainer.classList.add('project')
+   
 
     projectsList.forEach(project => {
-     
+        let projectContainer = document.createElement('li')
+        projectContainer.classList.add('project')
 
-        var projectName = document.createElement('div')
+        let projectIcon = document.createElement('img')
+        projectIcon.setAttribute('width', '40')
+        projectIcon.setAttribute('height', '40')
+       
+
+        projectContainer.appendChild(projectIcon)
+
+        let projectName = document.createElement('div')
         projectName.textContent = project.projectName
         projectContainer.appendChild(projectName)
 
-        var projectDesc = document.createElement('div')
+        let projectDesc = document.createElement('div')
         projectDesc.textContent = project.description
         projectContainer.appendChild(projectDesc)
 
-
+        projectContainer.addEventListener('click', ()=> {
+            clearContent(contentDisplay)
+            let containerForToDoList = createToDoListPage(project.projectName, contentDisplay)
+            displayAllItemsInProject(project.getToDoListItems(), containerForToDoList)
+        })
+        container.appendChild(projectContainer)
     })
 
-    container.appendChild(projectContainer)
+    displayAddProjectButton(container)
+}
+
+
+function displayAddProjectButton(container){
+        
 }
 
 
 
-export{displayAllItemsInProject, createHomePage, clearContent, createProjectsPage, displayAllProjects}
+
+export{displayAllItemsInProject, createToDoListPage, clearContent, createProjectsPage, displayAllProjects}
