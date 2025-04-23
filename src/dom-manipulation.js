@@ -5,6 +5,7 @@ import {Item} from "./to-do-item"
 
 const contentDisplay = document.querySelector('#content')
 const newProjectDialog = document.querySelector('#add-project-dialog')
+const addItemDialog = document.querySelector('#add-item-dialog')
 const menuDialog = document.querySelector('#menu-dialog')
 
 let headerItem = new Item('Title', 'Due Date', 'Description', 'Priority', false)
@@ -39,6 +40,18 @@ function displayToDoListPage(title){
     let containerForToDoList = createToDoListPage(title, contentDisplay)
     displayAllItemsInProject(defaultProjectList.getToDoListItems(), containerForToDoList)
     menuDialog.close()
+    addItemButton(containerForToDoList)
+}
+
+function addItemButton(container){
+    let addItemButton = document.createElement('button')
+    addItemButton.textContent = 'ADD NEW ITEM'
+    container.appendChild(addItemButton)
+
+    addItemButton.addEventListener('click', ()=>{
+        addItemDialog.showModal()
+    })
+
 }
 
 function displayProjectPage(){

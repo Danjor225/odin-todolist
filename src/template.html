@@ -22,7 +22,36 @@
                     </div>
                 </dialog>
             </div>
-            <dialog id="add-project-dialog">
+            <dialog id="add-item-dialog" class="dialog">
+                <form id="add-item-form">
+                    <fieldset>
+                        <label for="title">Enter your new Project Title:</label>
+                        <input type="text" name="title" id='item-title'required />
+                        <label for="due-date">Due Date:</label>
+                        <input type="date" name="due-date" id="item-due-date"/>
+                    </fieldset>
+                    <label for="description">Enter your description of project: </label>
+                    <input type="text" name="description" id="item-description"/>
+                    <fieldset>
+                      <label for="priority">Priority Level </label>
+                      <select name="priority" id="item-priority"/>
+                          <option value="High">High</option>
+                          <option value="Medium">Medium</option>
+                          <option value="Low">Low</option>
+                      </select>
+
+                      <label for="completed">Completed? </label>
+                      <input type="checkbox" name="completed" id="item-completed"/>
+                        
+                    </fieldset>
+                    <div>
+                      <button id="add-item-btn">Add</button>
+                      <button id="cancel-item-btn">Cancel</button>
+                    </div>
+                  </form>
+                  
+            </dialog>
+            <dialog id="add-project-dialog" class="dialog">
                 <form>
                     <div>
                       <label for="title">Enter your new Project Title:</label>
