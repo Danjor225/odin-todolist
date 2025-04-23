@@ -1,8 +1,9 @@
 class Projects{
-    constructor(projectName, currentToDoItems){
+    constructor(projectName, description, currentToDoItems){
 
         this.projectName = projectName
         this.currentToDoItems = currentToDoItems
+        this.description = description
     }
 
    addItemProjects(itemToAdd){
@@ -13,8 +14,25 @@ class Projects{
         return this.currentToDoItems
     }
 
+    getCertainAToDoItem(itemNameToReturn){
+        this.currentToDoItems.map((item)=>{
+            if(item == itemNameToReturn){
+                return item
+            }
+        })
+    }
+
 }
 
-var ProjectsList = []
+var projectsList = []
+  
+function addToProjectsList(projectToAdd){
+    projectsList.push(projectToAdd)
+}
 
-export {Projects , ProjectsList}
+function getProjectsList(){
+    return projectsList
+}
+
+
+export {Projects , addToProjectsList, getProjectsList}

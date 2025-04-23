@@ -2,8 +2,8 @@ import "./reset.css"
 import "./styles.css"
 
 import {Item} from "./to-do-item"
-import {displayAllItemsInProject, createHomePage, clearContent} from "./dom-manipulation"
-import {Projects} from "./projects"
+import {displayAllItemsInProject, createHomePage, clearContent, createProjectsPage, displayAllProjects} from "./dom-manipulation"
+import {Projects, addToProjectsList, getProjectsList} from "./projects"
 
 const contentDisplay = document.querySelector('#content')
 const menuDialog = document.querySelector('#menu-dialog')
@@ -18,8 +18,8 @@ var secondTestItem = new Item('Libbie', new Date('June 20, 00'), 'She is even co
 
 var startingItemsArray = [headerItem, firstTestItem, secondTestItem]
 
-var defaultProjectList = new Projects('Default Project Page', startingItemsArray)
-
+var defaultProjectList = new Projects('Default Project Page','Default page for all to do list items', startingItemsArray)
+addToProjectsList(defaultProjectList)
 
 
 
@@ -41,6 +41,8 @@ homeBtn.addEventListener('click', () => {
 
 projectBtn.addEventListener('click', ()=>{
     clearContent(contentDisplay)
+    var containerForToDoList = createProjectsPage(contentDisplay)
+    displayAllProjects(getProjectsList(), containerForToDoList)
     menuDialog.close()
 })
 
