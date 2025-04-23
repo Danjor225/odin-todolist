@@ -87,6 +87,9 @@ function displayAllProjects(projectsList, container){
 
 function displayAddProjectButton(container){
         
+    let addProjectButton = document.createElement('button')
+    addProjectButton.textContent = 'ADD NEW PROJECT'
+    container.appendChild(addProjectButton)
 }
 
 

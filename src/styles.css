@@ -131,6 +131,11 @@ body{
 }
 
 
+#projects-container > button:last-child{
+    align-self: center;
+    margin-top: auto;
+}
+
 .project{
     display: flex;
     align-items: center;
@@ -149,3 +154,4 @@ body{
 .project :nth-child(3){
     margin-left: auto;
 }
+
