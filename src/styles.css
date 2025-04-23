@@ -129,3 +129,10 @@ body{
     min-width: 100px;
     text-align: center;
 }
+
+
+.project{
+    display: flex;
+    gap: 100px;
+
+}

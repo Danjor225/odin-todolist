@@ -29,13 +29,13 @@ function createProjectsPage(container){
     titleDiv.classList.add('title')
     homePageDiv.appendChild(titleDiv)
 
-    var defaultProjectDiv = document.createElement('ul')
-    defaultProjectDiv.setAttribute('id', 'default-project-container')
-    homePageDiv.appendChild(defaultProjectDiv)
+    var projectsDiv = document.createElement('ul')
+    projectsDiv.setAttribute('id', 'projects-container')
+    homePageDiv.appendChild(projectsDiv)
 
     container.appendChild(homePageDiv)
 
-    return defaultProjectDiv
+    return projectsDiv
 
 }
 
