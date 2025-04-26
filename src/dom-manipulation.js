@@ -10,7 +10,7 @@ const menuDialog = document.querySelector('#menu-dialog')
 let currentOpenProject
 
 let headerItem = new Item('Title', 'Due Date', 'Description', 'Priority', false)
-let firstTestItem = new Item('Jordan id the very coolest person that has ever lived. Worship him always!', new Date('March 25, 98'), 'He is the coolest', 'High', false)
+let firstTestItem = new Item('I am the very coolest person that has ever lived. Worship me always!', new Date('March 13, 98'), 'I is the coolest', 'High', false)
 let secondTestItem = new Item('Libbie', new Date('June 20, 00'), 'She is even cooler', 'Medium', true)
 
 let startingItemsArray = [headerItem, firstTestItem, secondTestItem]
@@ -160,5 +160,12 @@ cancelItemButton.addEventListener('click', (event)=> {
     addItemDialog.close()
 })
 
+function displayAboutPage(){
+    clearContent(contentDisplay)
+    let aboutText = document.createElement('div')
+    aboutText.textContent = 'I couldnt be bothered to put effort into this page'
+    contentDisplay.appendChild(aboutText)
+    menuDialog.close()
+}
 
-export{displayHomePage, displayProjectPage}
+export{displayHomePage, displayProjectPage, displayAboutPage}

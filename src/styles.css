@@ -14,9 +14,10 @@ body{
 }
 
 #to-do-container{
-    min-width: 70vw;
+    min-width: 80vw;
     min-height: 80vh;
     max-height: 90vh;
+    max-width: 80vw;
     border: 5px solid black;
     background-color: rgba(175, 171, 171, 0.727);
     border-radius: 10px;

@@ -2,7 +2,7 @@ import "./reset.css"
 import "./styles.css"
 
 
-import {displayHomePage, displayProjectPage} from "./dom-manipulation"
+import {displayHomePage, displayProjectPage, displayAboutPage} from "./dom-manipulation"
 
 
 const menuDialog = document.querySelector('#menu-dialog')
@@ -33,7 +33,6 @@ projectBtn.addEventListener('click', ()=>{
 })
 
 aboutBtn.addEventListener('click', ()=>{
-
-    menuDialog.close()
+   displayAboutPage()
 }) 
 
