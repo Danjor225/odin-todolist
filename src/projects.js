@@ -26,6 +26,7 @@ class Projects{
 }
 
 import { displayProjectPage} from "./dom-manipulation"
+
 const createProjectBtn = document.querySelector('#create-project-btn')
 const cancelProjectBtn = document.querySelector('#cancel-project-btn')
 const newProjectDialog = document.querySelector('#add-project-dialog')
@@ -33,7 +34,6 @@ const newProjectDialog = document.querySelector('#add-project-dialog')
 
 let projectsList = []
   
-
 
 
 function addToProjectsList(projectToAdd){
