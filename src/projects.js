@@ -7,7 +7,7 @@ class Projects{
     }
 
    addItemProjects(itemToAdd){
-        this.currentToDoItems.append(itemToAdd)
+        this.currentToDoItems.push(itemToAdd)
     }
 
     getToDoListItems(){
@@ -22,14 +22,20 @@ class Projects{
         })
     }
 
+    
 }
 
+import { displayProjectPage} from "./dom-manipulation"
 const createProjectBtn = document.querySelector('#create-project-btn')
 const cancelProjectBtn = document.querySelector('#cancel-project-btn')
 const newProjectDialog = document.querySelector('#add-project-dialog')
-import { displayProjectPage } from "./dom-manipulation"
+
+
 let projectsList = []
   
+
+
+
 function addToProjectsList(projectToAdd){
     projectsList.push(projectToAdd)
 }

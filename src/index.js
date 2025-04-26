@@ -2,7 +2,7 @@ import "./reset.css"
 import "./styles.css"
 
 
-import {displayToDoListPage, displayProjectPage} from "./dom-manipulation"
+import {displayHomePage, displayProjectPage} from "./dom-manipulation"
 
 
 const menuDialog = document.querySelector('#menu-dialog')
@@ -12,8 +12,6 @@ const projectBtn = document.querySelector('#project-page-btn')
 const aboutBtn = document.querySelector('#about-page-btn')
 
 
-
-displayToDoListPage('Default Home Page')
 
 
 menuBtn.addEventListener('click', (event)=> {
@@ -25,7 +23,8 @@ menuBtn.addEventListener('click', (event)=> {
 
 
 homeBtn.addEventListener('click', () => {
-    displayToDoListPage('Default Home Page')
+   
+    displayHomePage()
    
 })
 
@@ -37,3 +36,4 @@ aboutBtn.addEventListener('click', ()=>{
 
     menuDialog.close()
 }) 
+

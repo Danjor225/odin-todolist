@@ -1,12 +1,13 @@
 
 import { domDisplay } from "../dom-display";
-import {Projects, addToProjectsList, getProjectsList } from "./projects";
-import {Item} from "./to-do-item"
+import {Projects, addToProjectsList, getProjectsList} from "./projects";
+import {Item, createNewItem} from "./to-do-item"
 
 const contentDisplay = document.querySelector('#content')
 const newProjectDialog = document.querySelector('#add-project-dialog')
 const addItemDialog = document.querySelector('#add-item-dialog')
 const menuDialog = document.querySelector('#menu-dialog')
+let currentOpenProject
 
 let headerItem = new Item('Title', 'Due Date', 'Description', 'Priority', false)
 let firstTestItem = new Item('Jordan id the very coolest person that has ever lived. Worship him always!', new Date('March 25, 98'), 'He is the coolest', 'High', false)
@@ -16,6 +17,14 @@ let startingItemsArray = [headerItem, firstTestItem, secondTestItem]
 
 let defaultProjectList = new Projects('Default Project Page','Default page for all to do list items', startingItemsArray)
 addToProjectsList(defaultProjectList)
+displayHomePage()
+
+
+
+function displayHomePage(){
+    currentOpenProject = defaultProjectList
+    displayToDoListPage()
+}
 
 function createToDoListPage(title, container){
     let homePageDiv = document.createElement('div')
@@ -35,10 +44,10 @@ function createToDoListPage(title, container){
     return defaultProjectDiv
 
 }
-function displayToDoListPage(title){
+function displayToDoListPage(){
     clearContent(contentDisplay)
-    let containerForToDoList = createToDoListPage(title, contentDisplay)
-    displayAllItemsInProject(defaultProjectList.getToDoListItems(), containerForToDoList)
+    let containerForToDoList = createToDoListPage(currentOpenProject.projectName, contentDisplay)
+    displayAllItemsInProject(currentOpenProject.getToDoListItems(), containerForToDoList)
     menuDialog.close()
     addItemButton(containerForToDoList)
 }
@@ -114,9 +123,8 @@ function displayAllProjects(projectsList, container){
         projectContainer.appendChild(projectDesc)
 
         projectContainer.addEventListener('click', ()=> {
-            clearContent(contentDisplay)
-            let containerForToDoList = createToDoListPage(project.projectName, contentDisplay)
-            displayAllItemsInProject(project.getToDoListItems(), containerForToDoList)
+            currentOpenProject = project
+            displayToDoListPage()
         })
         container.appendChild(projectContainer)
     })
@@ -137,7 +145,20 @@ function displayAddProjectButton(container){
 }
 
 
+const submitItemButton = document.querySelector('#add-item-btn')
+const cancelItemButton = document.querySelector('#cancel-item-btn')
+
+submitItemButton.addEventListener('click', (e)=> {
+   let newItem = createNewItem(e)
+    currentOpenProject.addItemProjects(newItem)
+    displayToDoListPage()
+    addItemDialog.close()
+})
+
+cancelItemButton.addEventListener('click', (event)=> {
+    event.preventDefault()
+    addItemDialog.close()
+})
 
 
-
-export{displayToDoListPage, displayProjectPage}
+export{displayHomePage, displayProjectPage}

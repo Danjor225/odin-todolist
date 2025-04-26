@@ -1,3 +1,5 @@
+import {format } from "date-fns";
+
 class Item{
     constructor(title,dueDate,description,priority,checked){
         this.title = title
@@ -13,5 +15,22 @@ class Item{
 }
 
 
+const addItemForm = document.querySelector('#add-item-form')
 
-export {Item}
+
+function createNewItem(e){
+    e.preventDefault()
+    let itemTitle = addItemForm.querySelector('#item-title').value
+    let itemDueDate  = addItemForm.querySelector('#item-due-date').value
+    itemDueDate = format(itemDueDate, "yyyy-MM-dd")
+    let itemDescription = addItemForm.querySelector('#item-description').value
+    let itemPriority = addItemForm.querySelector('#item-priority')
+    itemPriority = itemPriority.options[itemPriority.selectedIndex].text
+    let itemCompleted = addItemForm.querySelector('#item-completed').checked
+    
+    return new Item(itemTitle, itemDueDate, itemDescription, itemPriority, itemCompleted)
+}
+
+
+
+export {Item, createNewItem}
